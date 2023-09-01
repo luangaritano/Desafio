@@ -1,0 +1,37 @@
+using System;
+using System.Text;
+
+class Program
+{
+    static string CompactarString(string s)
+    {
+        StringBuilder compactada = new StringBuilder();
+        int contador = 1;
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (i == s.Length - 1 || s[i] != s[i + 1])
+            {
+                compactada.Append(s[i]);
+                if (contador > 1)
+                {
+                    compactada.Append(contador);
+                }
+                contador = 1;
+            }
+            else
+            {
+                contador++;
+            }
+        }
+
+        return compactada.ToString();
+    }
+
+    static void Main(string[] args)
+    {
+        string stringOriginal = "lllluuuaaan";
+        string stringCompactada = CompactarString(stringOriginal);
+        Console.WriteLine(stringCompactada); 
+    }
+}
