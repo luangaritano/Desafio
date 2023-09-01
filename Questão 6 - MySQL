@@ -1,0 +1,7 @@
+select NOME
+
+from CLIENTES
+
+where idade >= 22
+
+order by idade asc ;
