@@ -1,0 +1,39 @@
+def contar_vogais(conteudo):
+    vogais = "aeiouAEIOU"
+    return sum(1 for char in conteudo if char in vogais)
+
+def contar_consoantes(conteudo):
+    consoantes = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
+    return sum(1 for char in conteudo if char in consoantes)
+
+def main():
+    nome_arquivo = input("Digite o nome do arquivo de texto (exemplo: texto.txt): ")
+
+    try:
+        with open(nome_arquivo, 'r') as arquivo:
+            linhas = arquivo.readlines()
+            max_vogais = 0
+            max_consoantes = 0
+            linha_max_vogais = 0
+            linha_max_consoantes = 0
+
+            for idx, linha in enumerate(linhas):
+                num_vogais = contar_vogais(linha)
+                num_consoantes = contar_consoantes(linha)
+
+                if num_vogais > max_vogais:
+                    max_vogais = num_vogais
+                    linha_max_vogais = idx
+
+                if num_consoantes > max_consoantes:
+                    max_consoantes = num_consoantes
+                    linha_max_consoantes = idx
+
+            print(f"Linha com mais vogais: {linha_max_vogais + 1}")
+            print(f"Linha com mais consoantes: {linha_max_consoantes + 1}")
+
+    except FileNotFoundError:
+        print("Arquivo não encontrado.")
+
+if __name__ == "__main__":
+    main()
