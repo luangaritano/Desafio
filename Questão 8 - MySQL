@@ -1,0 +1,6 @@
+delete from CLIENTES
+
+where NOME like '% Santos';  
+
+
+--observar safe mode " WHERE "
