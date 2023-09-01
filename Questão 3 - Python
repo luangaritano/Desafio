@@ -1,0 +1,32 @@
+def main():
+    numeros = []
+    while True:
+        numero = int(input("Digite um número positivo (ou 0 para sair): "))
+        if numero == 0:
+            break
+        numeros.append(numero)
+
+    if not numeros:
+        print("Nenhum número foi digitado.")
+        return
+
+    print("Relatório:")
+    print("a) Quantidade de numeros lidos:", len(numeros))
+    print("b) Maior número lido:", max(numeros))
+    print("c) Média dos números lidos:", sum(numeros) / len(numeros))
+    
+    numeros_impares = [num for num in numeros if num % 2 != 0]
+    if numeros_impares:
+        print("d) Menor número ímpar lido:", min(numeros_impares))
+    
+    ocorrencias = {}
+    for num in numeros:
+        if num in ocorrencias:
+            ocorrencias[num] += 1
+        else:
+            ocorrencias[num] = 1
+    for num, quantidade in ocorrencias.items():
+        print(f"e) O número {num} ocorreu {quantidade} vezes.")
+
+if __name__ == "__main__":
+    main()
